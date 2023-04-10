@@ -1,17 +1,18 @@
-import React from 'react';
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import './App.css';
-import {HomePage} from "./Components/HomePage";
-import {BrowserRouter, Route, Routes} from "react-router-dom";
-import {Header} from "./Components/Header";
-import {Wish} from "./Components/Wish";
+import { Header } from "./Components/Header";
+import { MainPage } from "./Components/MainPage";
+import { Wish } from "./Components/Wish";
+import { WishList } from './Components/WishList';
 
 function App() {
     return (
         <BrowserRouter>
-            <div className="bg-[#000]">
+            <div className="bg-[#000] h-[750px]">
                 <Header/>
                 <Routes>
-                    <Route path="/" element={<HomePage/>}/>
+                    <Route path="/" element={<MainPage/>}/>
+                    <Route path="wishlist" element={<WishList/>}/>
                     <Route path="wish" element={<Wish/>}/>
                 </Routes>
             </div>
