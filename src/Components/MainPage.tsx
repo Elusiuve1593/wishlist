@@ -1,14 +1,13 @@
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import photo from "../Assets/img/photo.jpg";
 
 export const MainPage = () => {
-    
+
     const navigate = useNavigate()
-    
+
     const onclickWishHandler = () => navigate("wish")
     const onclickHomeHandler = () => navigate("wishlist")
-    useLocation
-
+    
     return (
         <div>
             <div className="flex">
@@ -38,9 +37,9 @@ export const MainPage = () => {
                         <span className="text-[#d4d4d2]">Create your wish</span>
                     </button>
 
-                    <button 
-                    className="text-[#272720] border-2 border-[#d4d4d2] rounded-full p-2 ml-32 text-2xl"
-                    onClick={onclickHomeHandler}
+                    <button
+                        className="text-[#272720] border-2 border-[#d4d4d2] rounded-full p-2 ml-32 text-2xl"
+                        onClick={onclickHomeHandler}
                     >
                         <span className="text-[#d4d4d2]">Home</span>
                     </button>

@@ -8,7 +8,7 @@ import { WishList } from './Components/WishList';
 function App() {
     return (
         <BrowserRouter>
-            <div className="bg-[#000] h-[750px]">
+            <div className="bg-[#000]">
                 <Header/>
                 <Routes>
                     <Route path="/" element={<MainPage/>}/>
