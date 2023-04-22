@@ -1,11 +1,13 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import { wishListReducer } from "./Reducers/wishListReducer";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
+import { spinnerReducer } from "./Reducers/spinnerReducer";
 
 export type AppRootStateType = ReturnType<typeof rootReducer>
 
 const rootReducer = combineReducers({
-    wishListReducer
+    wishListReducer,
+    spinnerReducer
 })
 
 export const store = configureStore({ reducer: rootReducer })

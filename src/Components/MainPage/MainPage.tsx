@@ -1,13 +1,16 @@
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import photo from "../Assets/img/photo.jpg";
+import photo from "../../Assets/img/photo.jpg";
+import { Wish } from "../WishList/Wish/Wish";
 
 export const MainPage = () => {
-
     const navigate = useNavigate()
 
-    const onclickWishHandler = () => navigate("wish")
+    const [modal, setModal] = useState<boolean>(false)
+
+    const onclickWishHandler = () => setModal(!false)
     const onclickHomeHandler = () => navigate("wishlist")
-    
+
     return (
         <div>
             <div className="flex">
@@ -22,8 +25,8 @@ export const MainPage = () => {
                     <div className="text-[#ffe500]">you want</div>
                 </div>
 
-                <div className="inline-block ml-52 mt-6 p-2">
-                    <img className="rounded-full w-[500px] h-[500px]" src={photo} alt="Karlik" />
+                <div className="inline-block ml-48 mt-10 p-2">
+                    <img className="rounded-full w-[400px] h-[400px]" src={photo} alt="happy woman" />
                 </div>
             </div>
 
@@ -37,12 +40,16 @@ export const MainPage = () => {
                         <span className="text-[#d4d4d2]">Create your wish</span>
                     </button>
 
-                    <button
-                        className="text-[#272720] border-2 border-[#d4d4d2] rounded-full p-2 ml-32 text-2xl"
-                        onClick={onclickHomeHandler}
-                    >
-                        <span className="text-[#d4d4d2]">Home</span>
-                    </button>
+                    {modal ?
+                        <Wish modalIsOpen={true} setIsOpen={() => { }} /> :
+                        <button
+                            className="text-[#272720] border-2 border-[#d4d4d2] rounded-full p-2 ml-32 text-2xl"
+                            onClick={onclickHomeHandler}
+                        >
+                            <span className="text-[#d4d4d2]">Home</span>
+                        </button>
+                    }
+
                 </div>
             </div>
         </div>

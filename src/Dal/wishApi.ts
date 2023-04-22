@@ -10,9 +10,10 @@ export const wishApi = {
         description: string,
         title: string,
         price: string | number,
-        categories: string[]
+        categories: string[],
+        urlLinks: string[]
     ) {
-        const createWish = { description, title, price, categories }
+        const createWish = { description, title, price, categories, urlLinks }
         return instance.post<WishListType>(`wishes`, createWish)
     },
     deleteWish: (id: number) => instance.delete<number>(`wishes/${id}`),
@@ -26,7 +27,7 @@ export type WishListType = {
     id: number
     title: string
     description: string
-    urlLinks: [string]
+    urlLinks: string[]
     price: string | number
     categories: string[]
 }
