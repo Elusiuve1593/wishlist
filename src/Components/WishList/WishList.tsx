@@ -5,6 +5,7 @@ import { WishListType } from "../../Dal/wishApi"
 import { useEffect, useState } from "react"
 import { deleteWishThunk, fetchWishThunk } from "../../Bll/Reducers/wishListReducer"
 import { Wish } from "./Wish/Wish"
+import { CreateElementBtn } from "../../ Helpers/CreateElementBtn"
 
 export const WishList = () => {
     const wishlist = useSelector<AppRootStateType, WishListType[]>(state => state.wishListReducer)
@@ -19,29 +20,26 @@ export const WishList = () => {
         dispatch(fetchWishThunk())
     }, [dispatch])
 
-    const onClickWishHandler = () => {
-        setModal(!false)
-    }
     const onClickMainPageHandler = () => navigate("/")
 
     return (
         <div >
             <div className="flex flex-wrap text-cyan-100">
-                {location.pathname === "wishlist" ? false : true}
+                
+                {modalIsOpen === false ?
+                    <div>
+                        <CreateElementBtn callback={() => setIsOpen(true)} />
+                    </div> : null
+
+                }
                 {modal ?
                     <Wish
                         modalIsOpen={modalIsOpen}
                         setIsOpen={setIsOpen}
                     /> :
                     <div>
-                        <button
-                            className="mt-[50px] ml-[50px] bg-[#272720] rounded-2xl w-[200px] h-[250px]"
-                            onClick={onClickWishHandler}
-                        >
-                            Create an element
-                        </button>
+                        <CreateElementBtn callback={() => setModal(true)} />
                     </div>
-
                 }
 
                 {wishlist.map((el) => {
@@ -55,7 +53,7 @@ export const WishList = () => {
                                 <div><span className="text-red-600">Description:</span> {el.description}</div>
                                 <div><span className="text-red-600">Price: </span>{el.price} uah</div>
                                 <div><span className="text-red-600">Category: </span>{el.categories}</div>
-                                <div>Link: <a className="text-red-600" href={el.urlLinks.join()} target="_blank">Go to the web</a></div>
+                                <div>Link: <a className="text-red-600" href={el.urlLinks.toString()} target="_blank">Go to the web</a></div>
                                 <button className="text-red-600"
                                     onClick={onDeleteHandler}
                                 >Delete</button>

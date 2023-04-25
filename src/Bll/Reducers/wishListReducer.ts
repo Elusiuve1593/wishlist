@@ -25,8 +25,8 @@ export const createWishThunk = createAsyncThunk("createWish",
         description: string,
         title: string,
         price: string | number,
-        categories: string[],
-        urlLinks: string[]
+        categories: string |string[],
+        urlLinks: string | string[]
     }, thunkAPI) => {
         thunkAPI.dispatch(setSpinner({ isLoading: true }))
         try {
@@ -72,7 +72,7 @@ const slice = createSlice({
             return action.payload.wishList.map(el => ({ ...el }))
         },
         addWish: (state, action: PayloadAction<{ wish: WishListType }>) => {
-            state.unshift({ ...action.payload.wish })
+            state.push({ ...action.payload.wish })
         },
         deleteWish: (state, action: PayloadAction<{ wishId: number }>) => {
             return state.filter(el => el.id !== action.payload.wishId)

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import photo from "../../Assets/img/photo.jpg";
 import { Wish } from "../WishList/Wish/Wish";
 
@@ -7,10 +7,10 @@ export const MainPage = () => {
     const navigate = useNavigate()
 
     const [modal, setModal] = useState<boolean>(false)
+    const [modalIsOpen, setIsOpen] = useState<boolean>(true)
 
-    const onclickWishHandler = () => setModal(!false)
-    const onclickHomeHandler = () => navigate("wishlist")
-
+    const onclickWishHandler = () => setModal(true)
+    const onclickHomeHandler = () => navigate("/wishlist")
     return (
         <div>
             <div className="flex">
@@ -32,24 +32,22 @@ export const MainPage = () => {
 
             <div className="ml-20 pb-2">
                 <div className="text-red-500 w">
-
                     <button
                         className="text-[#272720] border-2 border-[#d4d4d2] rounded-full p-2 text-2xl mt-8"
                         onClick={onclickWishHandler}
                     >
                         <span className="text-[#d4d4d2]">Create your wish</span>
                     </button>
-
+                    {!modalIsOpen && <Navigate to={"/wishlist"} />}
                     {modal ?
-                        <Wish modalIsOpen={true} setIsOpen={() => { }} /> :
-                        <button
+                        <Wish modalIsOpen={modalIsOpen} setIsOpen={setIsOpen} />
+                        : <button
                             className="text-[#272720] border-2 border-[#d4d4d2] rounded-full p-2 ml-32 text-2xl"
                             onClick={onclickHomeHandler}
                         >
                             <span className="text-[#d4d4d2]">Home</span>
                         </button>
                     }
-
                 </div>
             </div>
         </div>
