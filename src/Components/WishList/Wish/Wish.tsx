@@ -1,5 +1,5 @@
 import { SubmitHandler, useForm } from "react-hook-form";
-import Modal from 'react-modal';
+import Modal from "react-modal";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import ellipsis from "../../../Assets/gif/ellipsis.gif";
@@ -37,7 +37,7 @@ export const Wish = ({ modalIsOpen, setIsOpen }: ModalIsOpenType) => {
   const dispatch = useAppDispatch()
   const navigate = useNavigate()
 
-  const { register, handleSubmit, reset, formState: { errors } } = useForm<WishTypeForm>()
+  const { register, handleSubmit, reset, formState: { errors }, } = useForm<WishTypeForm>()
 
   const onSubmitHandler: SubmitHandler<WishTypeForm> = (data) => {
     const { description, price, cat, links, title } = data
@@ -58,7 +58,6 @@ export const Wish = ({ modalIsOpen, setIsOpen }: ModalIsOpenType) => {
   }
 
   return (
-    <div>
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
@@ -74,6 +73,10 @@ export const Wish = ({ modalIsOpen, setIsOpen }: ModalIsOpenType) => {
           <input
             {...register("description", {
               required: "Field is required!",
+              maxLength: {
+                value: 10,
+                message: "Max value, put 10 symbols or less!"
+              }
             })}
             className="ml-9 p-1.5 w-[250px] text-xl border-2 border-[#ccc] rounded-2xl"
             type="text"
@@ -153,13 +156,17 @@ export const Wish = ({ modalIsOpen, setIsOpen }: ModalIsOpenType) => {
               <div className="pr-9">
                 <textarea
                   {...register("title", {
-                    required: "Filed is required!"
+                    required: "Filed is required!",
+                    maxLength: {
+                      value: 50,
+                      message: "Max value, put 50 symbols or less!"
+                    }
                   })}
                   className="mb-3 p-1.5 h-[170px] w-[270px] text-xl text-center resize-none border-2 border-[#ccc] rounded-2xl"
-                  placeholder="Title of the wish"
+                  placeholder="Maximum 50 symbols for the Title"
                 />
-                {errors?.title &&
-                  <div className="ml-[23%] mt-[-20px] mb-4 text-red-600 text-xl">
+                {errors?.title?.message &&
+                  <div className="text-center mt-[-20px] mb-4 text-red-600 text-xl">
                     {errors.title.message}
                   </div>
                 }
@@ -176,6 +183,5 @@ export const Wish = ({ modalIsOpen, setIsOpen }: ModalIsOpenType) => {
           </div>
         </form>
       </Modal>
-    </div>
   )
 }
