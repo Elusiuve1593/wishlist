@@ -53,14 +53,10 @@ export const Wish = ({ modalIsOpen, setIsOpen }: ModalIsOpenType) => {
     reset()
   }
 
-  const closeModal = () => {
-    setIsOpen(false)
-  }
-
   return (
       <Modal
         isOpen={modalIsOpen}
-        onRequestClose={closeModal}
+        onRequestClose={() => setIsOpen(false)}
         style={customStyles}
       >
         <div

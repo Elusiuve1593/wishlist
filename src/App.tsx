@@ -22,11 +22,13 @@ function App() {
                 pauseOnHover={false}
                 transition={Flip}
             />
+
             <div className="bg-[#000] min-h-screen">
                 {isLoading && <div
                     className="absolute w-28 top-2/4 left-1/2">
                     <img src={ellipsis} ></img>
                 </div>}
+
                 <Routes >
                     <Route path="/" element={<MainPage />} />
                     <Route path="wishlist" element={<WishList />} />

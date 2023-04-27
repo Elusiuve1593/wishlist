@@ -13,28 +13,25 @@ const customStyles = {
 }
 
 type ModalIsOpenType = {
-    modalIsOpen: boolean
-    setIsOpen: (modalIsOpen: boolean) => void
+    description: boolean
+    setDescription: (description: boolean) => void
     presentDescription: string
     categories: string | string[]
     urlLinks: string | string[]
+
 }
 
 export const Description = ({
-    modalIsOpen,
-    setIsOpen,
+    setDescription,
+    description,
     presentDescription,
     categories,
     urlLinks }: ModalIsOpenType) => {
 
-    const closeModal = () => {
-        setIsOpen(false)
-    }
-
     return (
         < Modal
-            isOpen={modalIsOpen}
-            onRequestClose={closeModal}
+            isOpen={description}
+            onRequestClose={() => setDescription(false)}
             style={customStyles}
         >
             <div>Description: {presentDescription}</div>
