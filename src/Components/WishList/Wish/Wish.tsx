@@ -71,7 +71,7 @@ export const Wish = ({ modalIsOpen, setIsOpen }: ModalIsOpenType) => {
         <form onSubmit={handleSubmit(onSubmitHandler)} >
           <div className="ml-9 text-2xl">Name of the wish: </div>
           <input
-            {...register("description", {
+            {...register("title", {
               required: "Field is required!",
               maxLength: {
                 value: 10,
@@ -82,9 +82,9 @@ export const Wish = ({ modalIsOpen, setIsOpen }: ModalIsOpenType) => {
             type="text"
             placeholder={"Name of the wish"}
           />
-          {errors?.description && (
+          {errors?.title && (
             <div className="ml-9 text-red-600 text-xl">
-              {errors.description.message}
+              {errors.title.message}
             </div>
           )}
 
@@ -155,19 +155,19 @@ export const Wish = ({ modalIsOpen, setIsOpen }: ModalIsOpenType) => {
               </div>
               <div className="pr-9">
                 <textarea
-                  {...register("title", {
+                  {...register("description", {
                     required: "Filed is required!",
                     maxLength: {
-                      value: 50,
-                      message: "Max value, put 50 symbols or less!"
+                      value: 220,
+                      message: "Max value, put 220 symbols or less!"
                     }
                   })}
                   className="mb-3 p-1.5 h-[170px] w-[270px] text-xl text-center resize-none border-2 border-[#ccc] rounded-2xl"
-                  placeholder="Maximum 50 symbols for the Title"
+                  placeholder="Maximum 220 symbols for the Description"
                 />
-                {errors?.title?.message &&
+                {errors?.description?.message &&
                   <div className="text-center mt-[-20px] mb-4 text-red-600 text-xl">
-                    {errors.title.message}
+                    {errors.description.message}
                   </div>
                 }
               </div>

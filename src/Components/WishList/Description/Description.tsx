@@ -15,20 +15,31 @@ const customStyles = {
 type ModalIsOpenType = {
     modalIsOpen: boolean
     setIsOpen: (modalIsOpen: boolean) => void
+    presentDescription: string
+    categories: string | string[]
+    urlLinks: string | string[]
 }
 
-export const Description = ({ modalIsOpen, setIsOpen }: ModalIsOpenType) => {
+export const Description = ({
+    modalIsOpen,
+    setIsOpen,
+    presentDescription,
+    categories,
+    urlLinks }: ModalIsOpenType) => {
 
     const closeModal = () => {
         setIsOpen(false)
     }
+
     return (
-        <Modal
+        < Modal
             isOpen={modalIsOpen}
             onRequestClose={closeModal}
             style={customStyles}
         >
-
-        </Modal>
+            <div>Description: {presentDescription}</div>
+            <div>Categories: {categories}</div>
+            <div>UrlLinks: <a href={urlLinks.toString()} target="_blank">Go to the web</a></div>
+        </ Modal>
     )
 }
