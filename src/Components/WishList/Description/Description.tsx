@@ -1,3 +1,4 @@
+import { memo } from "react";
 import Modal from "react-modal";
 
 const customStyles = {
@@ -21,7 +22,7 @@ type ModalIsOpenType = {
 
 }
 
-export const Description = ({
+export const Description = memo(({
     setDescription,
     description,
     presentDescription,
@@ -39,4 +40,4 @@ export const Description = ({
             <div>UrlLinks: <a href={urlLinks.toString()} target="_blank">Go to the web</a></div>
         </ Modal>
     )
-}
+})

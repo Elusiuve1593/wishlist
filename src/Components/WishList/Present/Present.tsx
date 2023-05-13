@@ -1,9 +1,9 @@
-import { useState } from "react";
+import { memo, useState } from "react";
 import { FaRegTrashAlt } from "react-icons/fa";
-import { Description } from "../Description/Description";
-import { BodyOfPresent } from "./BodyOfPresent/BodyOfPresent";
 import { deleteWishThunk } from "../../../Bll/Reducers/wishListReducer";
 import { useAppDispatch } from "../../../Bll/store";
+import { Description } from "../Description/Description";
+import { BodyOfPresent } from "./BodyOfPresent/BodyOfPresent";
 
 type PresentType = {
     id: number
@@ -14,7 +14,7 @@ type PresentType = {
     urlLinks: string | string[]
 }
 
-export const Present = ({
+export const Present = memo(({
     id,
     price,
     title,
@@ -23,7 +23,6 @@ export const Present = ({
     urlLinks,
 }: PresentType) => {
     const dispatch = useAppDispatch()
-
     const [description, setDescription] = useState<boolean>(false)
     
     return (
@@ -53,4 +52,4 @@ export const Present = ({
 
         </div >
     )
-}
+})

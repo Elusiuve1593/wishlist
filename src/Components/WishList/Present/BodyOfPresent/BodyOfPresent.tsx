@@ -1,3 +1,4 @@
+import { memo } from "react";
 import present from "../../../../Assets/img/present.png";
 
 type BodyOfPresentType = {
@@ -5,7 +6,7 @@ type BodyOfPresentType = {
     title: string
 }
 
-export const BodyOfPresent = ({
+export const BodyOfPresent = memo(({
     price,
     title,
  }: BodyOfPresentType) => {
@@ -29,4 +30,4 @@ export const BodyOfPresent = ({
             </div>
         </div>
     )
-}
+})

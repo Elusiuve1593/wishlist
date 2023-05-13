@@ -1,10 +1,11 @@
+import { memo } from "react"
 import { FaPlus } from "react-icons/fa"
 
 type CreateElementBtnType = {
     callback: () => void
 }
 
-export const CreateElementBtn = ({ callback }: CreateElementBtnType) => {
+export const CreateElementBtn = memo(({ callback }: CreateElementBtnType) => {
     return (
         <div>
             <button
@@ -18,4 +19,4 @@ export const CreateElementBtn = ({ callback }: CreateElementBtnType) => {
             </button>
         </div>
     )
-}
+})

@@ -10,7 +10,7 @@ import { MainPage } from "./Components/MainPage/MainPage";
 import { Wish } from "./Components/WishList/Wish/Wish";
 import { WishList } from './Components/WishList/WishList';
 
-function App() {
+const App = () => {
     const isLoading = useSelector<AppRootStateType, boolean>(state => state.spinnerReducer.isLoading)
 
     return (
@@ -22,7 +22,6 @@ function App() {
                 pauseOnHover={false}
                 transition={Flip}
             />
-
             <div className="bg-[#000] min-h-screen">
                 {isLoading && <div
                     className="absolute w-28 top-2/4 left-1/2">
@@ -40,5 +39,4 @@ function App() {
         </div>
     );
 }
-
-export default App;
+export default App
