@@ -20,11 +20,11 @@ export const WishList = () => {
     const [modal, setModal] = useState<boolean>(false)
     const [modalIsOpen, setIsOpen] = useState<boolean>(true)
 
-    const pages: [] = [0]
+    const pages: any[] = [0]
 
     const pagesCount = Math.ceil(totalElements / perPage)
 
-
+    //@ts-ignore
     createPages(pages, pagesCount, currentPage)
 
 
